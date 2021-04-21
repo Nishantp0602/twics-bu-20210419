@@ -11,10 +11,10 @@ spec:
     readinessProbe:
       tcpSocket:
         port: 8080
-      initialDelaySeconds: 5
-      periodSeconds: 10
+      initialDelaySeconds: 90
+      periodSeconds: 30
     livenessProbe:
       tcpSocket:
         port: 8080
-      initialDelaySeconds: 15
-      periodSeconds: 20
+      initialDelaySeconds: 90
+      periodSeconds: 30
