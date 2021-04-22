@@ -8,6 +8,8 @@ spec:
     spec:
       template:
         spec:
+          imagePullSecrets:
+            - name:  regcred
           containers:
           - name: cron-job
             image: busybox
