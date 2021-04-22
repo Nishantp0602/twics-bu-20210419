@@ -22,4 +22,4 @@ spec:
 -o -E '\\d+%' | head -1 >> /tmp/index-output.html.txt); sleep 5; done"]
     volumeMounts:
     - name: shared-logs
-      mountPath: /var/log
+      mountPath: /tmp
