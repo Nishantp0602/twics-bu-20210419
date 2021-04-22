@@ -4,20 +4,20 @@ metadata:
   name: sidecar
 spec:
   volumes:
-  - name: shared-logs 
+  - name: shared-logs
     emptyDir: {}
   containers:
   - name: main-container
-    image: alpine 
+    image: busybox
     command: ["/bin/sh"]
-    args: ["-c", "ping google.com >> /tmp/index.html; sleep 60;done"]
+    args: ["-c", "while true; do date >> /tmp/index-input.html; sleep 10;done"]
     volumeMounts:
     - name: shared-logs
       mountPath: /tmp
   - name: sidecar-container
-    image: nginx
-    ports:
-      - containerPort: 80
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "while true; cat /tmp/index-input.html; sleep 60;done"]
     volumeMounts:
     - name: shared-logs
-      mountPath: /usr/share/nginx/html
+      mountPath: /tmp
