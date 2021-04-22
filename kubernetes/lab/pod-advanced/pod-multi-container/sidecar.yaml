@@ -10,7 +10,7 @@ spec:
   - name: main-container
     image: alpine 
     command: ["/bin/sh"]
-    args: ["-c", "ping google.com >> /tmp/index-input.html; sleep 60;done"]
+    args: ["-c", "ping google.com >> /tmp/index.html; sleep 60;done"]
     volumeMounts:
     - name: shared-logs
       mountPath: /tmp
@@ -20,4 +20,4 @@ spec:
       - containerPort: 80
     volumeMounts:
     - name: shared-logs
-      mountPath: /tmp/index-input.html
+      mountPath: /usr/share/nginx/html
