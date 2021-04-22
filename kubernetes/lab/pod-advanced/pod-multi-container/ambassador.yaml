@@ -43,7 +43,7 @@ spec:
     - containerPort: 80        
     volumeMounts:
       - name: nginx-config
-        mountPath:  https://www.brainupgrade.in
+        mountPath:  /etc/nginx/nginx.conf
         subPath: nginx.conf
   volumes:
     - name: nginx-config
