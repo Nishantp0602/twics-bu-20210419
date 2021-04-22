@@ -35,7 +35,7 @@ spec:
     image: busybox
     imagePullPolicy: IfNotPresent
     command: ["/bin/sh"]
-    args: ["-c","while true;do wget -O /tmp/app.txt localhost ;sleep 30;done"]
+    args: ["-c","while true;do wget -O /tmp/index-input.html localhost ;sleep 30;done"]
   - name: ambassador
     image: nginx
     imagePullPolicy: IfNotPresent
@@ -43,7 +43,7 @@ spec:
     - containerPort: 80        
     volumeMounts:
       - name: nginx-config
-        mountPath: /etc/nginx/nginx.conf
+        mountPath:  https://www.brainupgrade.in
         subPath: nginx.conf
   volumes:
     - name: nginx-config
