@@ -4,7 +4,7 @@ metadata:
   name: volume-emptydir
 spec:
   containers:
-  - image: nginx
+  - image: tutum/hello-world
     name: test-container
     volumeMounts:
     - mountPath: /cache
