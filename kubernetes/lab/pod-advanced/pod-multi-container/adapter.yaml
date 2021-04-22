@@ -15,7 +15,7 @@ spec:
     - name: shared-logs
       mountPath: /tmp
   - name: adapter-container
-    image: alpine
+    image: busybox
     command: ["/bin/sh"]
     args: ["-c", "while true; do (cat /tmp/index.html | head -1 > /tmp/index-output.html) && (cat /tmp/index.html | head -2 | tail -1 | grep
  -o -E '\\d+\\w' | head -1 >> /tmp/index-output.html) && (cat /tmp/index.html | head -3 | tail -1 | grep
