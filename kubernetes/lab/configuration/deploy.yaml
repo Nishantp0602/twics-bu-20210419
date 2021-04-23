@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydeploy
+  name: mydeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploy
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+        volumeMounts:
+        - name: config
+          mountPath: "/etc/cfg"
+          readOnly: true
+      volumes:
+    # You set volumes at the Pod level, then mount them into containers inside that Pod
+        - name: config
+          configMap:
+         # Provide the name of the ConfigMap you want to mount.
+            name: my-config
+status: {}
