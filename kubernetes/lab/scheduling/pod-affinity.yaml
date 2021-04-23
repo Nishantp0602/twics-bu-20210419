@@ -1,27 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pod-affinity-middle-tier
+  creationTimestamp: null
+  labels:
+    app: nginx
+  name: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      component: pod-affinity
+      app: nginx
+  strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        component: pod-affinity
+        app: nginx
     spec:
         affinity:
-          podAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                - key: tier
-                  operator: In  # NotIn, Exists, NotExists
-                  values:
-                  - cache
-              topologyKey: topology.kubernetes.io/zone
           podAntiAffinity:
             preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 100
@@ -33,9 +29,10 @@ spec:
                     values:
                     - messaging
                 topologyKey: kubernetes.io/hostname
+        imagePullSecrets:
+        - name: regcred
         containers:
-          - name: pod-affinity-middle-tier
-            image: nginx
-            imagePullPolicy: IfNotPresent
-            ports:
-              - containerPort: 80
+        - image: nginx
+          name: nginx
+          resources: {}
+status: {}
