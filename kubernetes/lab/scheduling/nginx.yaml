@@ -13,8 +13,6 @@ metadata:
   selfLink: /apis/apps/v1/namespaces/nishant/deployments/nginx
   uid: 51d7fb35-4108-4595-9cc8-79e694365d18
 spec:
-  imagePullSecrets:
-- name: regcred
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
